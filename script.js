@@ -64,7 +64,7 @@ render = () => {
 		cardH4.innerText = 	myLibrary[i].author;
 		pages.innerText = 'Pages: ' + myLibrary[i].pages;
 		year.innerText = 'Year: ' + myLibrary[i].year;
-		delButton.textContent = 'x';
+		delButton.innerHTML = '&times;';
 		
 		if (myLibrary[i].read) {
 			readButton.textContent = 'Read';

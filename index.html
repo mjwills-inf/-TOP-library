@@ -16,30 +16,42 @@
   <div id="background-image"></div>
   <div id="page-container">
 
-    <h1>Library.</h1>
-    <h2>A small exercise in DOM manipulation</h2>
+    <h1>Library.<span id="dark"> Dark.</span></h1>
+    <h2>A leaner's exercise in DOM manipulation. The Odin Project.</h2>
 
-    <button id="new-book" value="Add New Book">Add New Book</button>
+    <button id="new-book" class="btn" value="new-book">Add New Book</button>
 
-    <div id="input-fields">
-      <form>
-        <label for="title">Title</label>
-        <input id="title" name="title" type="text">
-        <br>
-        <label for="author">Author</label>
-        <input id="author" name="author" type="text">
-        <br>
-        <label for="pages">Pages</label>
-        <input id="pages" name="author" type="number">
-        <br>
-        <label for="year">Year</label>
-        <input id="year" name="year" type="number">
-        <br>
-        <label for="read">Read</label>
-        <input id="read" name="read" type="radio">
-        <br>
-        <input type="submit" value="Submit">
-      </form>
+    <div id="input-modal" class="modal">
+      <div id="input-form">
+        <form>
+          <label for="title">Title:</label>
+          <br>
+          <input id="title" class="entry" name="title" type="text" 
+              placeholder="Enter Book Title">
+          <br>
+          <label for="author">Author:</label>
+          <br>
+          <input id="author" class="entry" name="author" type="text" 
+              placeholder="Enter Author">
+          <br>
+          <label for="pages">Pages:</label>
+          <br>
+          <input id="pages" class="entry" name="author" type="number" 
+              placeholder="Number Of Pages">
+          <br>
+          <label for="year">Year:</label>
+          <br>
+          <input id="year" class="entry" name="year" type="number" 
+              placeholder="Year Published">
+          <br>
+          <label for="read">Read:</label>          
+          <input id="read" name="read" type="checkbox">
+          <br>
+          <input id="submit" type="submit" class="btn" value="Submit">
+          <br>
+          <input id="cancel" type="submit" class="btn" value="Cancel">
+        </form>
+      </div>
     </div>
 
     
