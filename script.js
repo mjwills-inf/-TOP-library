@@ -105,21 +105,22 @@ buttonFunction = (event) => {
 			modal.style.display = 'none';
 			break;
 		case "read":
-			console.log("read test")
+			readToggle(event);
 			break;
 		case "unread":
-			console.log("unread test")
+			readToggle(event);
 			break;
 		case "delete":
 			let parent = event.target.parentNode;
 			deleteBook(parent);
+			updateDataAttr();
 			break;
 	}
 }
 
 submitBook = () => {
 	addBookToLibrary(formTitle.value, formAuthor.value, formPages.value,
-			formYear.value, formRead.checked);
+		formYear.value, formRead.checked);
 	render();
 	addListeners();
 	clearValues();
@@ -129,6 +130,21 @@ deleteBook = (parent) => {
 	let arrayIndex = parent.getAttribute("data-array-ref");
 	myLibrary.splice(arrayIndex, 1);
 	parent.remove();
+}
+
+// failing to use book.prototype - Below seems retarded?
+readToggle = (event) => {
+	let card = event.target.parentNode;
+	let cardArrayIndex = card.getAttribute('data-array-ref');
+	if (myLibrary[cardArrayIndex].read) {
+		myLibrary[cardArrayIndex].read = false
+		event.target.classList = "unread jsBtn";
+		event.target.innerText = "Unread"
+	} else {
+		myLibrary[cardArrayIndex].read = true;
+		event.target.classList = "read jsBtn";
+		event.target.innerText = "Read"
+	}
 }
 
 // Should these be nested inside other functions or the switch
@@ -144,9 +160,7 @@ clearValues = () => {
 
 updateDataAttr = () => {
 	let cards = document.getElementsByClassName("book-card");
-	console.log(cards);
 	let cardsArr = Array.from(cards);
-	console.log(cardsArr);
 	cardsArr.reverse();                  // because prepend on render //
 	for (i = 0; i < cardsArr.length; i++) {
 		cardsArr[i].setAttribute('data-array-ref', i)
